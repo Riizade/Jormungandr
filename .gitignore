@@ -52,3 +52,18 @@ coverage.xml
 # Sphinx documentation
 docs/_build/
 
+# Eclipse
+.classpath
+.settings/
+
+# Intellij
+.idea/
+*.iws
+
+# Mac
+.DS_Store
+
+# Maven
+log/
+target/
+

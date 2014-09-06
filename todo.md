@@ -8,6 +8,7 @@ In Progress
 
 To Do
 ------------------------------------------------------------------------------
+- Autosort JSON alphabetically by "val"
 - Figure out Doxygen/comments
 - Write usage documentation for table spec
 - Write/find JSON viewer to easily view data tables

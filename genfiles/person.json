@@ -4,7 +4,7 @@
         "name" :
             [
                 {
-                    "val": "$hmnfirst$ $hmnlast$",
+                    "val": "$firstnamet$ $lastname$",
                     "wt": 1,
                     "req": {
                         "species": ["human", "dwarf", "elf"]
@@ -52,7 +52,7 @@
                 "req": {}
             }
         ],
-    "hmnfirst":
+    "firstname":
         [
             {
                 "val": "Andrew",
@@ -87,7 +87,7 @@
                 }
             }
         ],
-    "hmnlast":
+    "lastname":
         [
             {
                 "val": "$firstname$son",

@@ -1,42 +1,157 @@
 {
     "profiles":
     {
-        "name" :
+        "name":
             [
                 {
-                    "val": "$firstnamet$ $lastname$",
+                    "val": "$firstname$ $lastname$",
                     "wt": 1,
                     "req": {
                         "species": ["human", "dwarf", "elf"]
                     }
                 }
             ],
+        "age":
+            [
+                {
+                    "val": "[18-70]",
+                    "wt": 1,
+                    "req": {
+                        "species": ["human"]
+                    }
+                }
+            ],
+        "sex":
+            [
+                {
+                    "val": "male",
+                    "wt": 1,
+                    "req": {}
+                },
+                {
+                    "val": "female",
+                    "wt": 1,
+                    "req": {}
+                }
+            ],
+        "species":
+            [
+                {
+                    "val": "human",
+                    "wt": 1,
+                    "req": {}
+                },
+                {
+                    "val": "dwarf",
+                    "wt": 0,
+                    "req": {}
+                },
+                {
+                    "val": "elf",
+                    "wt": 0,
+                    "req": {}
+                }
+            ],
+        "occupation":
+            [
+                {
+                    "val": "$skilled$'s apprentice",
+                    "wt": 1,
+                    "req": {
+                        "age": ["[<26]"]
+                    }
+                },
+                {
+                    "val": "$skilled$",
+                    "wt": 1,
+                    "req": {}
+                },
+                {
+                    "val": "$unskilled$",
+                    "wt": 1,
+                    "req": {}
+                }
+            ],
+        "skilled":
+            [
+                {
+                    "val": "$metal$smith",
+                    "wt": 1,
+                    "req": {}
+                },
+                {
+                    "val": "alchemist",
+                    "wt": 1,
+                    "req": {}
+                }
+            ],
+        "unskilled":
+            [
+                {
+                    "val": "farmer",
+                    "wt": 1,
+                    "req": {}
+                },
+                {
+                    "val": "soldier",
+                    "wt": 1,
+                    "req": {}
+                }
+            ],
         "descriptors":
-        [
-            {
-                "val": "$pdesc$",
-                "wt": 1,
-                "req": {}
-            },
-            {
-                "val": "$pdesc$",
-                "wt": 1,
-                "req": {}
-            },
-            {
-                "val": "$pdesc$",
-                "wt": 1,
-                "req": {}
-            },
-            {
-                "val": "$mdesc$",
-                "wt": 1,
-                "req": {}
-            }
-        ]
+            [
+                {
+                    "val": "$pdesc$",
+                    "wt": 1,
+                    "req": {}
+                },
+                {
+                    "val": "$pdesc$",
+                    "wt": 1,
+                    "req": {}
+                },
+                {
+                    "val": "$pdesc$",
+                    "wt": 1,
+                    "req": {}
+                },
+                {
+                    "val": "$mdesc$",
+                    "wt": 1,
+                    "req": {}
+                }
+            ]
     },
     "resources":
     {
+    "metal":
+        [
+            {
+                "val": "gold",
+                "wt": 1,
+                "req": {}
+            },
+            {
+                "val": "silver",
+                "wt": 1,
+                "req": {}
+            },
+            {
+                "val": "black",
+                "wt": 1,
+                "req": {}
+            },
+            {
+                "val": "copper",
+                "wt": 1,
+                "req": {}
+            },
+            {
+                "val": "white",
+                "wt": 1,
+                "req": {}
+            }
+        ],
     "pdesc":
         [
             {
@@ -59,7 +174,7 @@
                 "wt": 1,
                 "req": {
                     "species": ["human"],
-                    "gender": ["male"]
+                    "sex": ["male"]
                 }
             },
             {
@@ -67,7 +182,7 @@
                 "wt": 1,
                 "req": {
                     "species": ["human"],
-                    "gender": ["male"]
+                    "sex": ["male"]
                 }
             },
             {
@@ -75,7 +190,7 @@
                 "wt": 1,
                 "req": {
                     "species": ["human"],
-                    "gender": ["male"]
+                    "sex": ["male"]
                 }
             },
             {
@@ -83,7 +198,7 @@
                 "wt": 1,
                 "req": {
                     "species": ["human"],
-                    "gender": ["male"]
+                    "sex": ["male"]
                 }
             }
         ],
@@ -169,7 +284,8 @@
                 "wt": 1,
                 "req": {
                     "species": ["human"],
-                    "gender": ["male"]
+                    "sex": ["male"],
+                    "age": ["[>30]"]
                 }
             }
         ],

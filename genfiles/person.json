@@ -1,0 +1,264 @@
+{
+    "profiles":
+    {
+        "name" :
+            [
+                {
+                    "val": "$hmnfirst$ $hmnlast$",
+                    "wt": 1,
+                    "req": {
+                        "species": ["human", "dwarf", "elf"]
+                    }
+                }
+            ],
+        "descriptors":
+        [
+            {
+                "val": "$pdesc$",
+                "wt": 1,
+                "req": {}
+            },
+            {
+                "val": "$pdesc$",
+                "wt": 1,
+                "req": {}
+            },
+            {
+                "val": "$pdesc$",
+                "wt": 1,
+                "req": {}
+            },
+            {
+                "val": "$mdesc$",
+                "wt": 1,
+                "req": {}
+            }
+        ]
+    },
+    "resources":
+    {
+    "pdesc":
+        [
+            {
+                "val": "Has $hairdesc$, $haircolor$ hair.",
+                "wt": 1,
+                "req": {
+                    "species": ["human", "dwarf", "elf"]
+                }
+            },
+            {
+                "val": "$physique$",
+                "wt": 1,
+                "req": {}
+            }
+        ],
+    "hmnfirst":
+        [
+            {
+                "val": "Andrew",
+                "wt": 1,
+                "req": {
+                    "species": ["human"],
+                    "gender": ["male"]
+                }
+            },
+            {
+                "val": "John",
+                "wt": 1,
+                "req": {
+                    "species": ["human"],
+                    "gender": ["male"]
+                }
+            },
+            {
+                "val": "Leon",
+                "wt": 1,
+                "req": {
+                    "species": ["human"],
+                    "gender": ["male"]
+                }
+            },
+            {
+                "val": "Sylas",
+                "wt": 1,
+                "req": {
+                    "species": ["human"],
+                    "gender": ["male"]
+                }
+            }
+        ],
+    "hmnlast":
+        [
+            {
+                "val": "$firstname$son",
+                "wt": 10,
+                "req": {
+                    "species": ["human"]
+                }
+            },
+            {
+                "val": "Kingsley",
+                "wt": 1,
+                "req": {
+                    "species": ["human"]
+                }
+            },
+            {
+                "val": "Forsythe",
+                "wt": 1,
+                "req": {
+                    "species": ["human"]
+                }
+            },
+            {
+                "val": "Gygax",
+                "wt": 1,
+                "req": {
+                    "species": ["human"]
+                }
+            }
+        ],
+    "hairdesc":
+        [
+            {
+                "val": "light",
+                "wt": 1,
+                "req": {}
+            },
+            {
+                "val": "curly",
+                "wt": 1,
+                "req": {
+                    "species": ["human", "dwarf"]
+                }
+            },
+            {
+                "val": "thin",
+                "wt": 1,
+                "req": {}
+            },
+            {
+                "val": "thick",
+                "wt": 1,
+                "req": {}
+            },
+            {
+                "val": "wavy",
+                "wt": 1,
+                "req": {}
+            },
+            {
+                "val": "flat",
+                "wt": 1,
+                "req": {}
+            },
+            {
+                "val": "wild",
+                "wt": 1,
+                "req": {
+                    "species": ["human", "dwarf"]
+                }
+            },
+            {
+                "val": "short",
+                "wt": 1,
+                "req": {}
+            },
+            {
+                "val": "balding",
+                "wt": 1,
+                "req": {
+                    "species": ["human"],
+                    "gender": ["male"]
+                }
+            }
+        ],
+    "haircolor":
+        [
+            {
+                "val": "$blonde$",
+                "wt": 1,
+                "req": {}
+            },
+            {
+                "val": "$redhead$",
+                "wt": 1,
+                "req": {}
+            },
+            {
+                "val": "$brownhair$",
+                "wt": 1,
+                "req": {}
+            },
+            {
+                "val": "$blackhair$",
+                "wt": 1,
+                "req": {}
+            },
+            {
+                "val": "snow white",
+                "wt": 1,
+                "req": {}
+            }
+        ],
+    "blonde":
+        [
+            {
+                "val": "flaxen",
+                "wt": 1,
+                "req": {}
+            },
+            {
+                "val": "wheatish blonde",
+                "wt": 1,
+                "req": {}
+            },
+            {
+                "val": "platinum blonde",
+                "wt": 1,
+                "req": {}
+            }
+        ],
+    "redhead":
+        [
+            {
+                "val": "auburn",
+                "wt": 1,
+                "req": {}
+            },
+            {
+                "val": "copper",
+                "wt": 1,
+                "req": {}
+            }
+        ],
+    "brownhair":
+        [
+            {
+                "val": "chestnut",
+                "wt": 1,
+                "req": {}
+            },
+            {
+                "val": "muddy brown",
+                "wt": 1,
+                "req": {}
+            }
+        ],
+    "blackhair":
+        [
+            {
+                "val": "jet black",
+                "wt": 1,
+                "req": {}
+            },
+            {
+                "val": "sooty black",
+                "wt": 1,
+                "req": {}
+            }
+        ]
+    }
+
+
+}

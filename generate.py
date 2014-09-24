@@ -43,23 +43,6 @@ def choose_options(data, options, entity, n):
         yield value
         n -= 1
 
-"""
-def weighted_selection(items, n):
-    total = float(sum(w for w, v in items))
-    i = 0
-    w, v = items[0]
-    while n:
-        x = total * (1 - random.random() ** (1.0 / n))
-        total -= x
-        while x > w:
-            x -= w
-            i += 1
-            w, v = items[i]
-        w -= x
-        yield v
-        n -= 1
-"""
-
 
 # weighted selection without replacement
 def weighted_selection(items, n):

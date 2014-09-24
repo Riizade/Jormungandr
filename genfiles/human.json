@@ -53,7 +53,7 @@
         "descriptors":
             [
                 {
-                    "val": "$pdesc$",
+                    "val": "$pdesc$ $pdesc$ $pdesc$",
                     "wt": 1,
                     "req": {}
                 }
@@ -119,6 +119,16 @@
         [
             {
                 "val": "Has $hairdesc$, $haircolor$ hair.",
+                "wt": 1,
+                "req": {}
+            },
+            {
+                "val": "Has $eyedesc$, $eyecolor$ eyes.",
+                "wt": 1,
+                "req": {}
+            },
+            {
+                "val": "Is $degree$ $height$.",
                 "wt": 1,
                 "req": {}
             }
@@ -194,6 +204,88 @@
             },
             {
                 "val": "Gygax",
+                "wt": 1,
+                "req": {}
+            }
+        ],
+    "degree":
+        [
+            {
+                "val": "extraordinarily",
+                "wt": 1,
+                "req": {}
+            },
+            {
+                "val": "very",
+                "wt": 1,
+                "req": {}
+            },
+            {
+                "val": "somewhat",
+                "wt": 1,
+                "req": {}
+            },
+            {
+                "val": "noticeably",
+                "wt": 1,
+                "req": {}
+            }
+        ],
+    "height":
+        [
+            {
+                "val": "tall",
+                "wt": 1,
+                "req": {}
+            },
+            {
+                "val": "short",
+                "wt": 1,
+                "req": {}
+            }
+        ],
+    "eyedesc":
+        [
+            {
+                "val": "sharp",
+                "wt": 1,
+                "req": {}
+            },
+            {
+                "val": "round",
+                "wt": 1,
+                "req": {}
+            },
+            {
+                "val": "almond-shaped",
+                "wt": 1,
+                "req": {}
+            },
+            {
+                "val": "bright",
+                "wt": 1,
+                "req": {}
+            },
+            {
+                "val": "twinkling",
+                "wt": 1,
+                "req": {}
+            }
+        ],
+        "eyecolor":
+        [
+            {
+                "val": "blue",
+                "wt": 1,
+                "req": {}
+            },
+            {
+                "val": "brown",
+                "wt": 1,
+                "req": {}
+            },
+            {
+                "val": "green",
                 "wt": 1,
                 "req": {}
             }

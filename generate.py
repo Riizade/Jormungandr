@@ -17,12 +17,12 @@ def generate_entity(data):
     # for each key in the data profile
     for key, options in data["profile"].items():
         # generate a value for the entity according to the list of options
-        entity[key] = choose_option(data, options, entity)
+        entity[key] = next(choose_options(data, options, entity, 1))
 
     return entity
 
 
-def choose_option(data, options, entity):
+def choose_options(data, options, entity, n):
     # keep a list of options for which the entity fulfills all requirements
     valid_options = []
     # for each option
@@ -32,16 +32,18 @@ def choose_option(data, options, entity):
             # add the option to the valid list
             valid_options.append([opt['wt'], opt['val']])
 
-    # select one of the valid options and store its value
-    chosen = next(weighted_selection(valid_options, 1))
+    # get a generator that returns the chosen options
+    chosen = weighted_selection(valid_options, n)
+    # yield each chosen option
+    while n:
+        # replace commands inside the value of the next chosen
+        value = parse_commands(data, entity, next(chosen))
 
-    # replace commands inside the value of chosen
-    chosen = parse_commands(data, entity, chosen)
+        # return the completed value
+        yield value
+        n -= 1
 
-    # return the completed value
-    return chosen
-
-
+"""
 def weighted_selection(items, n):
     total = float(sum(w for w, v in items))
     i = 0
@@ -56,55 +58,54 @@ def weighted_selection(items, n):
         w -= x
         yield v
         n -= 1
-
 """
-def weighted_selection(options):
-    # keep track of total weight of all options
-    total_weight = 0
-    # for each option
-    for opt in options:
-        # update the total_weight
-        total_weight += opt["wt"]
 
-    # generate a random integer between 0 and total_weight
-    number = random.randint(0, total_weight)
 
-    # select the option that corresponds to the generated number
-    current_weight = 0
-    index = 0
-    while number > current_weight:
-        current_weight += options[index]['wt']
-        index += 1
-    # return the selected option
-    return options[index]
-"""
+# weighted selection without replacement
+def weighted_selection(items, n):
+    total_weight = float(sum(wt for wt, val in items))
+    while n:
+        index = 0
+        running_weight = items[0][0]
+        rand_num = random.random() * total_weight
+        while rand_num > running_weight:
+            index += 1
+            running_weight += items[index][0]
+        wt, val = items.pop(index)
+        total_weight -= wt
+        yield val
 
 
 # removes all command syntax from a string, replacing it with a valid value for that command
 def parse_commands(data, entity, string):
     string = parse_selection(data, entity, string)
-    string = parse_numerical(string)
+    string = parse_numeric(string)
 
     return string
 
 
 # selection command: $...$
 def parse_selection(data, entity, string):
-    while True:
-        # break when no more replacements are needed
-        matches = re.search("\$(.*?)\$", string)
-        if matches is None:
-            break
-        # get replacement value
-        replacement = choose_option(data, data["resources"][matches.group(1)], entity)
-        # replace command with its replacement value
-        string = string.replace(matches.group(0), replacement)
+    # get list of all matches
+    matches = re.findall("\$(.*?)\$", string)
+    # unique list
+    match_set = set(matches)
+    # for each unique match
+    for match in match_set:
+        # get number of occurrences in original string
+        occurences = matches.count(match)
+        # get replacement values
+        replacements = choose_options(data, data["resources"][match], entity, occurences)
+        # for each occurence
+        for i in range(occurences):
+            # replace command with a unique replacement value
+            string = string.replace('$'+match+'$', next(replacements), 1)
 
     return string
 
 
 # numerical generation command: [...]
-def parse_numerical(string):
+def parse_numeric(string):
     while True:
         # break when no more replacements are needed
         matches = re.search("\[([0-9]*)\-([0-9]*)\]", string)

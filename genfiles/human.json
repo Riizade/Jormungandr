@@ -1,6 +1,19 @@
 {
     "profile":
     {
+        "sex":
+            [
+                {
+                    "val": "male",
+                    "wt": 1,
+                    "req": {}
+                },
+                {
+                    "val": "female",
+                    "wt": 1,
+                    "req": {}
+                }
+            ],
         "name":
             [
                 {
@@ -17,19 +30,6 @@
                     "wt": 1,
                     "req": {
                     }
-                }
-            ],
-        "sex":
-            [
-                {
-                    "val": "male",
-                    "wt": 1,
-                    "req": {}
-                },
-                {
-                    "val": "female",
-                    "wt": 1,
-                    "req": {}
                 }
             ],
         "occupation":
@@ -54,21 +54,6 @@
             [
                 {
                     "val": "$pdesc$",
-                    "wt": 1,
-                    "req": {}
-                },
-                {
-                    "val": "$pdesc$",
-                    "wt": 1,
-                    "req": {}
-                },
-                {
-                    "val": "$pdesc$",
-                    "wt": 1,
-                    "req": {}
-                },
-                {
-                    "val": "$mdesc$",
                     "wt": 1,
                     "req": {}
                 }
@@ -136,11 +121,6 @@
                 "val": "Has $hairdesc$, $haircolor$ hair.",
                 "wt": 1,
                 "req": {}
-            },
-            {
-                "val": "$physique$",
-                "wt": 1,
-                "req": {}
             }
         ],
     "firstname":
@@ -171,6 +151,27 @@
                 "wt": 1,
                 "req": {
                     "sex": ["male"]
+                }
+            },
+            {
+                "val": "Anna",
+                "wt": 1,
+                "req": {
+                    "sex": ["female"]
+                }
+            },
+            {
+                "val": "Lisa",
+                "wt": 1,
+                "req": {
+                    "sex": ["female"]
+                }
+            },
+            {
+                "val": "Zoe",
+                "wt": 1,
+                "req": {
+                    "sex": ["female"]
                 }
             }
         ],

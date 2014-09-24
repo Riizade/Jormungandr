@@ -7,7 +7,6 @@
                     "val": "$firstname$ $lastname$",
                     "wt": 1,
                     "req": {
-                        "species": ["human", "dwarf", "elf"]
                     }
                 }
             ],
@@ -17,7 +16,6 @@
                     "val": "[18-70]",
                     "wt": 1,
                     "req": {
-                        "species": ["human"]
                     }
                 }
             ],
@@ -34,32 +32,12 @@
                     "req": {}
                 }
             ],
-        "species":
-            [
-                {
-                    "val": "human",
-                    "wt": 1,
-                    "req": {}
-                },
-                {
-                    "val": "dwarf",
-                    "wt": 0,
-                    "req": {}
-                },
-                {
-                    "val": "elf",
-                    "wt": 0,
-                    "req": {}
-                }
-            ],
         "occupation":
             [
                 {
                     "val": "$skilled$'s apprentice",
                     "wt": 1,
-                    "req": {
-                        "age": ["[<26]"]
-                    }
+                    "req": {}
                 },
                 {
                     "val": "$skilled$",
@@ -157,9 +135,7 @@
             {
                 "val": "Has $hairdesc$, $haircolor$ hair.",
                 "wt": 1,
-                "req": {
-                    "species": ["human", "dwarf", "elf"]
-                }
+                "req": {}
             },
             {
                 "val": "$physique$",
@@ -173,7 +149,6 @@
                 "val": "Andrew",
                 "wt": 1,
                 "req": {
-                    "species": ["human"],
                     "sex": ["male"]
                 }
             },
@@ -181,7 +156,6 @@
                 "val": "John",
                 "wt": 1,
                 "req": {
-                    "species": ["human"],
                     "sex": ["male"]
                 }
             },
@@ -189,7 +163,6 @@
                 "val": "Leon",
                 "wt": 1,
                 "req": {
-                    "species": ["human"],
                     "sex": ["male"]
                 }
             },
@@ -197,7 +170,6 @@
                 "val": "Sylas",
                 "wt": 1,
                 "req": {
-                    "species": ["human"],
                     "sex": ["male"]
                 }
             }
@@ -207,30 +179,22 @@
             {
                 "val": "$firstname$son",
                 "wt": 10,
-                "req": {
-                    "species": ["human"]
-                }
+                "req": {}
             },
             {
                 "val": "Kingsley",
                 "wt": 1,
-                "req": {
-                    "species": ["human"]
-                }
+                "req": {}
             },
             {
                 "val": "Forsythe",
                 "wt": 1,
-                "req": {
-                    "species": ["human"]
-                }
+                "req": {}
             },
             {
                 "val": "Gygax",
                 "wt": 1,
-                "req": {
-                    "species": ["human"]
-                }
+                "req": {}
             }
         ],
     "hairdesc":
@@ -243,9 +207,7 @@
             {
                 "val": "curly",
                 "wt": 1,
-                "req": {
-                    "species": ["human", "dwarf"]
-                }
+                "req": {}
             },
             {
                 "val": "thin",
@@ -270,23 +232,12 @@
             {
                 "val": "wild",
                 "wt": 1,
-                "req": {
-                    "species": ["human", "dwarf"]
-                }
+                "req": {}
             },
             {
                 "val": "short",
                 "wt": 1,
                 "req": {}
-            },
-            {
-                "val": "balding",
-                "wt": 1,
-                "req": {
-                    "species": ["human"],
-                    "sex": ["male"],
-                    "age": ["[>30]"]
-                }
             }
         ],
     "haircolor":

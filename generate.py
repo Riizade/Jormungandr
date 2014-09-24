@@ -1,5 +1,6 @@
 import json
 import random
+import re
 
 
 # load a json file into a dictionary
@@ -18,7 +19,7 @@ def generate(data):
         entity[key] = ""
 
 
-def extract(options, entity):
+def extract(data, options, entity):
     # keep track of total weight of all options
     total_weight = 0
     # keep a list of options for which the entity fulfills all requirements
@@ -44,7 +45,22 @@ def extract(options, entity):
     chosen = valid_options[index]['val']
 
     # now replace commands inside the value of chosen
+    # selection command: $...$
+    while True:
+        # break when no more replacements are needed
+        matches = re.search("$(.*?)$")
+        if matches is None:
+            break
+        # get replacement value
+        replacement = extract(data, data["resources"][matches.group(1)], entity)
+        # replace command with its replacement value
+        re.sub(matches.group(0), replacement)
+
+    # numerical generation command: [...]
     # TODO
+
+    # return the completed value
+    return chosen
 
 
 def check_req(option, entity):

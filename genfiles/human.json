@@ -143,6 +143,13 @@
                 }
             },
             {
+                "val": "Jacob",
+                "wt": 1,
+                "req": {
+                    "sex": ["male"]
+                }
+            },
+            {
                 "val": "John",
                 "wt": 1,
                 "req": {
@@ -189,7 +196,7 @@
         [
             {
                 "val": "$firstname$son",
-                "wt": 10,
+                "wt": 3,
                 "req": {}
             },
             {

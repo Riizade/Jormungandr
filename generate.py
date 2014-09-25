@@ -30,7 +30,7 @@ def choose_options(data, options, entity, n):
         # check if entity fulfills all requirements
         if check_req(opt, entity):
             # add the option to the valid list
-            valid_options.append([opt['wt'], opt['val']])
+            valid_options.append([parse_weight({}, opt['wt']), opt['val']])
 
     # get a generator that returns the chosen options
     chosen = weighted_selection(valid_options, n)
@@ -42,6 +42,27 @@ def choose_options(data, options, entity, n):
         # return the completed value
         yield value
         n -= 1
+
+
+# parses the expression that represents the weight of an object, and evaluates the expression to return an integer
+# returns: integer
+def parse_weight(context, weight):
+    # replace selection commands in the expression
+    # get list of all matches
+    matches = re.findall("\$(.*?)\$", weight)
+    # unique list
+    match_set = set(matches)
+    # for each unique match
+    for match in match_set:
+        # replace command with its replacement value
+        try:
+            weight = weight.replace('$'+match+'$', context[match])
+        except KeyError:
+            weight = weight.replace('$'+match+'$', "1")
+
+    # evaluate the expression with constants
+    # THIS IS SUPER UNSAFE, WILL EXECUTE ARBITRARY CODE
+    return eval(weight)
 
 
 # weighted selection without replacement

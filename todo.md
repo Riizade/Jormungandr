@@ -3,6 +3,7 @@ Done (needs testing)
 
 In Progress
 ------------------------------------------------------------------------------
+- Implement context passing for weight modification
 - Define data table spec
     - Figure out syntax/parser for weight parsing
     - Decide on a syntax for lists of values in an entity's attribute

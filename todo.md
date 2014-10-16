@@ -3,17 +3,23 @@ Done (needs testing)
 
 In Progress
 ------------------------------------------------------------------------------
+- Implement context passing for weight modification
 - Define data table spec
-- Fill in enough data to generate at least one entity
+    - Figure out syntax/parser for weight parsing
+    - Decide on a syntax for lists of values in an entity's attribute
+    - Decide on a syntax for referencing attributes of the entity
 
 To Do
 ------------------------------------------------------------------------------
+- Build a command-line interface for generating things
 - Autosort JSON alphabetically by "val"
 - Figure out Doxygen/comments
 - Write usage documentation for table spec
 - Write/find JSON viewer to easily view data tables
-- Write generator that creates entities from the JSON tables
-- Write function that tests JSON tables for correctness
+- Write error handling that tests JSON tables for correctness
+    - Invalid syntax/values for a field
+    - Duplicate specifications for an attribute or resource
+    - Determine if something can never be generated (requires an attribute that will not be present at the time of selection)
 
 Feature Wishlist
 ------------------------------------------------------------------------------

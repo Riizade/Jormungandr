@@ -5,7 +5,7 @@
             [
               {
                     "val": "human",
-                    "wt": 1,
+                    "wt": "1",
                     "req": {}
                }
             ],
@@ -13,12 +13,12 @@
             [
                 {
                     "val": "male",
-                    "wt": 1,
+                    "wt": "1",
                     "req": {}
                 },
                 {
                     "val": "female",
-                    "wt": 1,
+                    "wt": "1",
                     "req": {}
                 }
             ],
@@ -26,35 +26,33 @@
             [
                 {
                     "val": "$firstname$ $lastname$",
-                    "wt": 1,
-                    "req": {
-                    }
+                    "wt": "1",
+                    "req": {}
                 }
             ],
         "age":
             [
                 {
                     "val": "[18-70]",
-                    "wt": 1,
-                    "req": {
-                    }
+                    "wt": "1",
+                    "req": {}
                 }
             ],
         "occupation":
             [
                 {
                     "val": "$skilled$'s apprentice",
-                    "wt": 1,
+                    "wt": "1",
                     "req": {}
                 },
                 {
                     "val": "$skilled$",
-                    "wt": 1,
+                    "wt": "1",
                     "req": {}
                 },
                 {
                     "val": "$unskilled$",
-                    "wt": 1,
+                    "wt": "1",
                     "req": {}
                 }
             ],
@@ -62,7 +60,7 @@
             [
                 {
                     "val": "$pdesc$ $pdesc$ $pdesc$",
-                    "wt": 1,
+                    "wt": "1",
                     "req": {}
                 }
             ]
@@ -73,27 +71,27 @@
         [
             {
                 "val": "gold",
-                "wt": 1,
+                "wt": "1",
                 "req": {}
             },
             {
                 "val": "silver",
-                "wt": 1,
+                "wt": "1",
                 "req": {}
             },
             {
                 "val": "black",
-                "wt": 1,
+                "wt": "1",
                 "req": {}
             },
             {
                 "val": "copper",
-                "wt": 1,
+                "wt": "1",
                 "req": {}
             },
             {
                 "val": "tin",
-                "wt": 1,
+                "wt": "1",
                 "req": {}
             }
         ],
@@ -101,12 +99,12 @@
         [
             {
                 "val": "$metal$smith",
-                "wt": 1,
+                "wt": "1",
                 "req": {}
             },
             {
                 "val": "alchemist",
-                "wt": 1,
+                "wt": "1",
                 "req": {}
             }
         ],
@@ -114,12 +112,12 @@
         [
             {
                 "val": "farmer",
-                "wt": 1,
+                "wt": "1",
                 "req": {}
             },
             {
                 "val": "soldier",
-                "wt": 1,
+                "wt": "1",
                 "req": {}
             }
         ],
@@ -127,17 +125,17 @@
         [
             {
                 "val": "Has $hairdesc$, $haircolor$ hair.",
-                "wt": 1,
+                "wt": "1",
                 "req": {}
             },
             {
                 "val": "Has $eyedesc$, $eyecolor$ eyes.",
-                "wt": 1,
+                "wt": "1",
                 "req": {}
             },
             {
                 "val": "Is $degree$ $height$.",
-                "wt": 1,
+                "wt": "1",
                 "req": {}
             }
         ],
@@ -145,49 +143,56 @@
         [
             {
                 "val": "Andrew",
-                "wt": 1,
+                "wt": "1",
+                "req": {
+                    "sex": ["male"]
+                }
+            },
+            {
+                "val": "Jacob",
+                "wt": "1",
                 "req": {
                     "sex": ["male"]
                 }
             },
             {
                 "val": "John",
-                "wt": 1,
+                "wt": "1",
                 "req": {
                     "sex": ["male"]
                 }
             },
             {
                 "val": "Leon",
-                "wt": 1,
+                "wt": "1",
                 "req": {
                     "sex": ["male"]
                 }
             },
             {
                 "val": "Sylas",
-                "wt": 1,
+                "wt": "1",
                 "req": {
                     "sex": ["male"]
                 }
             },
             {
                 "val": "Anna",
-                "wt": 1,
+                "wt": "1",
                 "req": {
                     "sex": ["female"]
                 }
             },
             {
                 "val": "Lisa",
-                "wt": 1,
+                "wt": "1",
                 "req": {
                     "sex": ["female"]
                 }
             },
             {
                 "val": "Zoe",
-                "wt": 1,
+                "wt": "1",
                 "req": {
                     "sex": ["female"]
                 }
@@ -197,22 +202,22 @@
         [
             {
                 "val": "$firstname$son",
-                "wt": 10,
+                "wt": "3",
                 "req": {}
             },
             {
                 "val": "Kingsley",
-                "wt": 1,
+                "wt": "1",
                 "req": {}
             },
             {
                 "val": "Forsythe",
-                "wt": 1,
+                "wt": "1",
                 "req": {}
             },
             {
                 "val": "Gygax",
-                "wt": 1,
+                "wt": "1",
                 "req": {}
             }
         ],
@@ -220,22 +225,22 @@
         [
             {
                 "val": "extraordinarily",
-                "wt": 1,
+                "wt": "1",
                 "req": {}
             },
             {
                 "val": "very",
-                "wt": 1,
+                "wt": "1",
                 "req": {}
             },
             {
                 "val": "somewhat",
-                "wt": 1,
+                "wt": "1",
                 "req": {}
             },
             {
                 "val": "noticeably",
-                "wt": 1,
+                "wt": "1",
                 "req": {}
             }
         ],
@@ -243,12 +248,12 @@
         [
             {
                 "val": "tall",
-                "wt": 1,
+                "wt": "1",
                 "req": {}
             },
             {
                 "val": "short",
-                "wt": 1,
+                "wt": "1",
                 "req": {}
             }
         ],
@@ -256,27 +261,27 @@
         [
             {
                 "val": "sharp",
-                "wt": 1,
+                "wt": "1",
                 "req": {}
             },
             {
                 "val": "round",
-                "wt": 1,
+                "wt": "1",
                 "req": {}
             },
             {
                 "val": "almond-shaped",
-                "wt": 1,
+                "wt": "1",
                 "req": {}
             },
             {
                 "val": "bright",
-                "wt": 1,
+                "wt": "1",
                 "req": {}
             },
             {
                 "val": "twinkling",
-                "wt": 1,
+                "wt": "1",
                 "req": {}
             }
         ],
@@ -284,17 +289,17 @@
         [
             {
                 "val": "blue",
-                "wt": 1,
+                "wt": "1",
                 "req": {}
             },
             {
                 "val": "brown",
-                "wt": 1,
+                "wt": "1",
                 "req": {}
             },
             {
                 "val": "green",
-                "wt": 1,
+                "wt": "1",
                 "req": {}
             }
         ],
@@ -302,42 +307,42 @@
         [
             {
                 "val": "light",
-                "wt": 1,
+                "wt": "1",
                 "req": {}
             },
             {
                 "val": "curly",
-                "wt": 1,
+                "wt": "1",
                 "req": {}
             },
             {
                 "val": "thin",
-                "wt": 1,
+                "wt": "1",
                 "req": {}
             },
             {
                 "val": "thick",
-                "wt": 1,
+                "wt": "1",
                 "req": {}
             },
             {
                 "val": "wavy",
-                "wt": 1,
+                "wt": "1",
                 "req": {}
             },
             {
                 "val": "flat",
-                "wt": 1,
+                "wt": "1",
                 "req": {}
             },
             {
                 "val": "wild",
-                "wt": 1,
+                "wt": "1",
                 "req": {}
             },
             {
                 "val": "short",
-                "wt": 1,
+                "wt": "1",
                 "req": {}
             }
         ],
@@ -345,39 +350,39 @@
         [
             {
                 "val": "$blonde$",
-                "wt": 1,
+                "wt": "1",
                 "req": {}
             },
             {
                 "val": "$redhead$",
-                "wt": 1,
+                "wt": "1",
                 "req": {}
             },
             {
                 "val": "$brownhair$",
-                "wt": 1,
+                "wt": "1",
                 "req": {}
             },
             {
                 "val": "$blackhair$",
-                "wt": 1,
+                "wt": "1",
                 "req": {}
             },
             {
                 "val": "snow white",
-                "wt": 1,
+                "wt": "1",
                 "req": {}
             },
             {
                 "val": "grey",
-                "wt": 8,
+                "wt": "8",
                 "req": {
                     "age":["[>=50]"]
                 }
             },
             {
                 "val": "greying",
-                "wt": 8,
+                "wt": "8",
                 "req": {
                     "age":["[>=38]"]
                 }
@@ -387,17 +392,17 @@
         [
             {
                 "val": "flaxen",
-                "wt": 1,
+                "wt": "1",
                 "req": {}
             },
             {
                 "val": "wheatish blonde",
-                "wt": 1,
+                "wt": "1",
                 "req": {}
             },
             {
                 "val": "platinum blonde",
-                "wt": 1,
+                "wt": "1",
                 "req": {}
             }
         ],
@@ -405,12 +410,12 @@
         [
             {
                 "val": "auburn",
-                "wt": 1,
+                "wt": "1",
                 "req": {}
             },
             {
                 "val": "copper",
-                "wt": 1,
+                "wt": "1",
                 "req": {}
             }
         ],
@@ -418,12 +423,12 @@
         [
             {
                 "val": "chestnut",
-                "wt": 1,
+                "wt": "1",
                 "req": {}
             },
             {
                 "val": "muddy brown",
-                "wt": 1,
+                "wt": "1",
                 "req": {}
             }
         ],
@@ -431,12 +436,12 @@
         [
             {
                 "val": "jet black",
-                "wt": 1,
+                "wt": "1",
                 "req": {}
             },
             {
                 "val": "sooty black",
-                "wt": 1,
+                "wt": "1",
                 "req": {}
             }
         ]

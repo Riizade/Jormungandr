@@ -11,6 +11,7 @@ The values stored in each sections are lists of objects called "options".
 This specifies what attributes a particular entity has, and how to generate them.
 Each key in this object is an attribute that the generated entity will have.
 The list of options that make up the value of each key is a list of values that can fill that attribute.
+The first attribute of an entity is "type", which identifies what type of entity it represents.
 
 ### Resources ###
 The resources object contains a list of keys that can be referenced in the values of options.
@@ -59,6 +60,6 @@ A numeric generation command looks like this [#-#], where # are numbers.
 On entity generation, this command will be replaced with an integer that falls in the range of the two numbers specified, inclusive.
 
 ### Numeric Comparison Command ###
-A numeric comparison command looks like [>#], [<#] or [=#].
-This command will be used to check if a certain field has a number respectively greater than, less than, or equal to the number specified in the command.
+A numeric comparison command looks like [>#], [<#], [>=#], [<=#], or [=#].
+This command will be used to check if a certain field has a number respectively greater than, less than, or equal to the number specified in the command as described by the operator that appears before the number.
 This command type only appears in the "req" field of options.

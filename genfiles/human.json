@@ -1,6 +1,14 @@
 {
     "profile":
     {
+        "type":
+            [
+              {
+                    "val": "human",
+                    "wt": 1,
+                    "req": {}
+               }
+            ],
         "sex":
             [
                 {
@@ -272,7 +280,7 @@
                 "req": {}
             }
         ],
-        "eyecolor":
+    "eyecolor":
         [
             {
                 "val": "blue",
@@ -359,6 +367,20 @@
                 "val": "snow white",
                 "wt": 1,
                 "req": {}
+            },
+            {
+                "val": "grey",
+                "wt": 8,
+                "req": {
+                    "age":["[>=50]"]
+                }
+            },
+            {
+                "val": "greying",
+                "wt": 8,
+                "req": {
+                    "age":["[>=38]"]
+                }
             }
         ],
     "blonde":

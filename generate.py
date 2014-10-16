@@ -4,6 +4,13 @@ import random
 import re
 
 
+def num(s):
+    try:
+        return int(s)
+    except ValueError:
+        return float(s)
+
+
 # load a json file into a dictionary
 def load_json(filename):
     f = json.load(open(filename), object_pairs_hook=collections.OrderedDict)
@@ -17,18 +24,18 @@ def generate_entity(data):
     # for each key in the data profile
     for key, options in data["profile"].items():
         # generate a value for the entity according to the list of options
-        entity[key] = next(choose_options(data, options, entity, 1))
+        entity[key] = next(choose_options(data["resources"], options, entity, 1))
 
     return entity
 
 
-def choose_options(data, options, entity, n):
+def choose_options(res, options, entity, n):
     # keep a list of options for which the entity fulfills all requirements
     valid_options = []
     # for each option
     for opt in options:
         # check if entity fulfills all requirements
-        if check_req(opt, entity):
+        if check_reqs(opt, entity):
             # add the option to the valid list
             valid_options.append([opt['wt'], opt['val']])
 
@@ -37,7 +44,7 @@ def choose_options(data, options, entity, n):
     # yield each chosen option
     while n:
         # replace commands inside the value of the next chosen
-        value = parse_commands(data, entity, next(chosen))
+        value = parse_commands(res, entity, next(chosen))
 
         # return the completed value
         yield value
@@ -60,15 +67,18 @@ def weighted_selection(items, n):
 
 
 # removes all command syntax from a string, replacing it with a valid value for that command
-def parse_commands(data, entity, string):
-    string = parse_selection(data, entity, string)
+def parse_commands(res, entity, string):
+    string = parse_selection(res, entity, string)
     string = parse_numeric(string)
 
     return string
 
 
 # selection command: $...$
-def parse_selection(data, entity, string):
+# returns a string with instances of a selection command replaced by a value selected by the command
+# res is the list of resources that the selection command will pull from
+# entity is the entity being generated as it currently exists, used for checking against requirements
+def parse_selection(res, entity, string):
     # get list of all matches
     matches = re.findall("\$(.*?)\$", string)
     # unique list
@@ -78,7 +88,7 @@ def parse_selection(data, entity, string):
         # get number of occurrences in original string
         occurences = matches.count(match)
         # get replacement values
-        replacements = choose_options(data, data["resources"][match], entity, occurences)
+        replacements = choose_options(res, res[match], entity, occurences)
         # for each occurence
         for i in range(occurences):
             # replace command with a unique replacement value
@@ -87,7 +97,9 @@ def parse_selection(data, entity, string):
     return string
 
 
-# numerical generation command: [...]
+# numeric generation command: [...]
+# returns a string with instances of a numeric generation command replaces with a number generated from the command
+# string is the string that will be parsed
 def parse_numeric(string):
     while True:
         # break when no more replacements are needed
@@ -102,15 +114,70 @@ def parse_numeric(string):
     return string
 
 
-def check_req(option, entity):
+# checks an entity to ensure that it follows all requirements in options
+# options is the option that entity is being checked against to see if it meets the requirements
+# entity is the entity that is being checked against the requirements of option
+def check_reqs(option, entity):
+
     # for each key in requirements
     for key, values in option["req"].items():
-        # check the entity's key of the same name
-        # if the value stored in entity[key] is not in the list of valid
-        # options in option["req"][key]
-        if entity[key] not in values:
+        if not check_attr(values, entity, key):
             # return that one or more requirements were not met
             return False
 
-    # if no requirements went unfulfilled, return that all requirements were met
+    # if no attribute requirements went unfulfilled, return that all requirements were met
     return True
+
+
+# checks whether an attribute on entity matches any one of the possible values for the requirement
+# vals is the list of possible values that entity[attr] can have
+# entity is the entity being checked
+# attr is the particular attribute being checked on the entity
+def check_attr(vals, entity, attr):
+    # if it meets one of the requirements, return True
+    for value in vals:
+        if check_req(value, entity, attr):
+            return True
+
+    # if it met none of the requirements, return False
+    return False
+
+
+# checks whether exactly one possible value of a requirement matches the corresponding attribute attr on entity
+# req is the value that is being compared to entity[attr]
+# entity is the entity that is attempting to fulfill the requirement
+# attr is the attribute of entity that must match the value of req
+def check_req(req, entity, attr):
+
+    compare_nums = re.match("\[(<|>|<=|>=|=)([0-9]+)\]", req)
+    # if the value is a numeric comparison
+    if not compare_nums is None:
+        try:
+            num(entity[attr])
+        except ValueError:
+            print("Attempted to do a numeric comparison on a non-numeric entity attribute: "+entity.type+"["+attr+"]")
+
+        return compare(compare_nums.group(1), entity[attr], compare_nums.group(2))
+    # if the requirement is a straight text comparison
+    else:
+        if entity[attr] == req:
+            return True
+        else:
+            return False
+
+
+# takes 3 strings
+# operator is a string containing the operator to use for comparison (one of =, <, <=, >, >=)
+# a and b are the values that will be compared
+# both a and b must be numeric
+def compare(operator, a, b):
+    if operator == "=":
+        return num(a) == num(b)
+    elif operator == "<":
+        return num(a) < num(b)
+    elif operator == "<=":
+        return num(a) <= num(b)
+    elif operator == ">":
+        return num(a) > num(b)
+    elif operator == ">=":
+        return num(a) >= num(b)

@@ -33,7 +33,18 @@ def generate_entity(data):
 
 # returns a generator which yields a maximum of n items from options for which entity fulfills all requirements
 def choose_options(options, entity, n):
-    # keep a list of options for which the entity fulfills all requirements
+    valid_options = get_valid_options(options, entity)
+    # get a generator that returns the chosen options
+    chosen = weighted_selection(valid_options, n)
+    # yield each chosen option
+    while n:
+        # return the completed value
+        yield next(chosen)
+        n -= 1
+
+
+# returns a list of items contained in options for which entity fulfills all requirements
+def get_valid_options(options, entity):
     valid_options = []
     # for each option
     for opt in options:
@@ -42,13 +53,7 @@ def choose_options(options, entity, n):
             # add the option to the valid list
             valid_options.append([parse_weight({}, opt['wt']), opt['val']])
 
-    # get a generator that returns the chosen options
-    chosen = weighted_selection(valid_options, n)
-    # yield each chosen option
-    while n:
-        # return the completed value
-        yield next(chosen)
-        n -= 1
+    return valid_options
 
 
 # parses the expression that represents the weight of an object, and evaluates the expression to return an integer

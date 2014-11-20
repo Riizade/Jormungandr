@@ -22,6 +22,9 @@ If hair color is generated first, getting grey hair is now unconditionally more 
 This means that lots of grey hair will be generated, and consequently, lots of older people.
 This means that enabling this feature disallows conditionality of probability on other fields.
 
+The major benefit of arbitrary generation order is the ability to specify attributes unconditionally before generation, allowing for towns to generate say, a certain number of people with the guard occupation, rather than relying on randomness.
+However, this feature messes with probability distributions for certain required occupations (which may be desired).
+
 
 Alternative implementation 1:
 Instead of having this feature, attributes could have a definite generation order. With this implementation, if I want to specify a particular attribute before generation, I would have to generate an entity up to that attribute, then check if the entity meets all requirements. If not, then I have to regenerate. This gives no guarantees that a valid entity will or can ever be generated.
@@ -30,3 +33,4 @@ This is confusing because it then causes numeric attribute requirements to have 
 
 Alternative implementation 2:
 Remove requirements.
+This has lots of downsides, like not being able to split names by male/female.

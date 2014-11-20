@@ -24,12 +24,15 @@ def generate_entity(data):
     # for each key in the data profile
     for key, options in data["profile"].items():
         # generate a value for the entity according to the list of options
-        entity[key] = next(choose_options(data["resources"], options, entity, 1))
+        value = next(choose_options(options, entity, 1))
+        # parses commands out of the value generated
+        entity[key] = parse_commands(data['resources'], entity, value)
 
     return entity
 
 
-def choose_options(res, options, entity, n):
+# returns a generator which yields a maximum of n items from options for which entity fulfills all requirements
+def choose_options(options, entity, n):
     # keep a list of options for which the entity fulfills all requirements
     valid_options = []
     # for each option
@@ -43,11 +46,8 @@ def choose_options(res, options, entity, n):
     chosen = weighted_selection(valid_options, n)
     # yield each chosen option
     while n:
-        # replace commands inside the value of the next chosen
-        value = parse_commands(res, entity, next(chosen))
-
         # return the completed value
-        yield value
+        yield next(chosen)
         n -= 1
 
 
@@ -88,8 +88,11 @@ def weighted_selection(items, n):
 
 # removes all command syntax from a string, replacing it with a valid value for that command
 def parse_commands(res, entity, string):
-    string = parse_selection(res, entity, string)
-    string = parse_numeric(string)
+    oldstring = ""
+    while not string == oldstring:
+        oldstring = string
+        string = parse_selection(res, entity, string)
+        string = parse_numeric(string)
 
     return string
 
@@ -108,7 +111,7 @@ def parse_selection(res, entity, string):
         # get number of occurrences in original string
         occurences = matches.count(match)
         # get replacement values
-        replacements = choose_options(res, res[match], entity, occurences)
+        replacements = choose_options(res[match], entity, occurences)
         # for each occurence
         for i in range(occurences):
             # replace command with a unique replacement value

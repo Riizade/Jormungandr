@@ -11,7 +11,9 @@ In Progress
 
 To Do
 ------------------------------------------------------------------------------
+- Allow for arbitrary ordering of attribute generation
 - Build a command-line interface for generating things
+- Change entity generation to pass-by-reference
 - Autosort JSON alphabetically by "val"
 - Figure out Doxygen/comments
 - Write usage documentation for table spec

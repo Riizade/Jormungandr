@@ -25,6 +25,8 @@ This means that enabling this feature disallows conditionality of probability on
 The major benefit of arbitrary generation order is the ability to specify attributes unconditionally before generation, allowing for towns to generate say, a certain number of people with the guard occupation, rather than relying on randomness.
 However, this feature messes with probability distributions for certain required occupations (which may be desired).
 
+The lookup time can be minimized by maintaining a graph of the probability information. The tree would be constructed from the JSON, then we could traverse it backward to calculate the probabilities of having selected a particular attribute from the value that would have been its parent, had it been generated in the specified order in the file. We can use these probabilities to reverse the tree and select attributes based on the attributes we were given at generation time.
+
 
 Alternative implementation 1:
 Instead of having this feature, attributes could have a definite generation order. With this implementation, if I want to specify a particular attribute before generation, I would have to generate an entity up to that attribute, then check if the entity meets all requirements. If not, then I have to regenerate. This gives no guarantees that a valid entity will or can ever be generated.
